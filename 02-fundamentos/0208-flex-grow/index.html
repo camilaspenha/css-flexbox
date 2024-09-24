@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Grow</title>
+</head>
+<style>
+  /* Os itens não se expandem para ocupar o container. */
+  .grow0 {
+    flex-grow: 0;
+  }
+
+  /* Os itens se expandem igualmente para ocupar o container. Utilizando apenas o flex-grow, o crescimento é distribuído igualmente antes e depois do conteúdo de cada elemento. (pois por padrão o flex-basis é auto) */
+  .grow1 {
+    flex-grow: 1;
+  }
+
+  /* Os itens se expandem duas vezes mais que aqueles com flex-grow: 1; */
+  .grow2 {
+    flex-grow: 2;
+  }
+
+  .item {
+    margin: 5px;
+    background: tomato;
+    text-align: center;
+    font-size: 1.5em;
+  }
+
+  /* Flex Container */
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid #ccc;
+  }
+  /* Flex Item */
+
+
+  h1 {
+    text-align: center;
+    margin: 20px 0 0 0;
+    font-size: 1.25em;
+    font-weight: normal;
+  }
+
+  body {
+    font-family: monospace;
+    color: #333;
+  }
+  .header{
+    margin: 3rem auto;
+    max-width: 900px;
+  }
+  .header h1{
+    text-align: left;
+  }
+</style>
+<body>
+
+  <div class="header">
+
+    <h1>Flex Item</h1>
+    <p>Os Flex Itens são os filhos diretos do Flex Container, lembrado que uma tag se torna um flex container a partir do momento que você definir display: flex.</p>
+    <p>É possível que um Flex Item seja também um Flex Container, basta definir display: flex nele. Assim os filhos desse item também serão flex itens.</p>
+
+    <h1>Flex Grow</h1>
+
+    <p>Define a habilidade de um flex item crescer. Por padrão o valor é zero, assim os flex itens ocupam um tamanho máximo relacionado o conteúdo interno deles ou ao width definido.</p>
+
+    <p>Ao definir 1 para todos os Flex Itens, eles tentarão ter a mesma largura e vão ocupar 100% do container. Digo tentarão pois caso um elemento possua um conteúdo muito largo, ele irá respeitar o mesmo.</p>
+
+    <p>Se você tiver uma linha com quatro itens, onde três são flex-grow: 1 e um flex-grow: 2, o flex-grow: 2 tentará ocupar 2 vezes mais espaço extra do que os outros elementos.</p>
+
+    <p>OBS: justify-content não funciona em items com flex-grow definido.</p>
+
+    <p><strong>flex-grow: número;</strong> Basta definir um número</p>
+    <p><strong>flex-grow: 0;</strong> Obedece o width do elemento ou o flex-basis.</p>
+  </div>
+  <h1>flex-grow: 0;</h1>
+  <section class="container">
+    <div class="item grow0">1</div>
+    <div class="item grow0">2</div>
+    <div class="item grow0">3</div>
+  </section>
+
+  <h1>flex-grow: 1;</h1>
+  <section class="container">
+    <div class="item grow1">1</div>
+    <div class="item grow1">2</div>
+    <div class="item grow1">3</div>
+  </section>
+
+  <h1>flex-grow: 2;</h1>
+  <section class="container column">
+    <div class="item grow2">1</div>
+    <div class="item grow2">2</div>
+    <div class="item grow2">3</div>
+  </section>
+
+  <h1>flex-grow: 1; // conteúdo largo</h1>
+  <section class="container column-reverse">
+    <div class="item grow1">1</div>
+    <div class="item grow1">TestandoTestando2</div>
+    <div class="item grow1">3</div>
+  </section>
+
+  <h1>flex-grow: (misturado);</h1>
+  <section class="container column-reverse">
+    <div class="item grow0">1</div>
+    <div class="item grow1">2</div>
+    <div class="item grow2">3</div>
+  </section>
+</body>
+
+</html>
